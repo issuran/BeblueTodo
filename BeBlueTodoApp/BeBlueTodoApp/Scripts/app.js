@@ -45,6 +45,8 @@
         });
     }
 
+    self.resultChoices = ["In Progress", "Done"];
+
     self.addTodoItem = function (formElement) {
         var todoitem = {
             PersonId: self.newTodoItem.Person.Id,            
