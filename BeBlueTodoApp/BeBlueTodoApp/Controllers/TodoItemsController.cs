@@ -26,7 +26,8 @@ namespace BeBlueTodoApp.Controllers
                                 Id = b.Id,
                                 Description = b.Description,
                                 IsDone = b.IsDone,
-                                PersonName = b.Person.Name
+                                PersonName = b.Person.Name,
+                                PersonId = b.Person.Id
                             };
             return todoItems;
         }
@@ -40,7 +41,8 @@ namespace BeBlueTodoApp.Controllers
                 Id = b.Id,
                 Description = b.Description,
                 IsDone = b.IsDone,
-                PersonName = b.Person.Name
+                PersonName = b.Person.Name,
+                PersonId = b.Person.Id
             }).SingleOrDefaultAsync(b => b.Id == id);
             if (todoItem == null)
             {
@@ -103,7 +105,9 @@ namespace BeBlueTodoApp.Controllers
                 Id = todoItem.Id,
                 Description = todoItem.Description,
                 IsDone = todoItem.IsDone,
-                PersonName = todoItem.Person.Name
+                PersonName = todoItem.Person.Name,
+                PersonId = todoItem.Person.Id
+                
             };
 
             return CreatedAtRoute("DefaultApi", new { id = todoItem.Id }, dto);
@@ -124,6 +128,8 @@ namespace BeBlueTodoApp.Controllers
 
             return Ok(todoItem);
         }
+
+
 
         protected override void Dispose(bool disposing)
         {

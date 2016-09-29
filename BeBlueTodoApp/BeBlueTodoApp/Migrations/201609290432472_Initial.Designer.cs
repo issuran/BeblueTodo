@@ -13,7 +13,7 @@ namespace BeBlueTodoApp.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201609280406566_Initial"; }
+            get { return "201609290432472_Initial"; }
         }
         
         string IMigrationMetadata.Source

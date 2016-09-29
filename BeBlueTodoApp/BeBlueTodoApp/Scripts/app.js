@@ -31,10 +31,31 @@
         });
     }
 
+    self.remove = ko.observable();
+    self.getTodoItemRemove = function (item) {
+        ajaxHelper(todoItemsUri + item.Id, 'DELETE').done();
+    }
+
+
+    self.updateTodo = ko.observable();
+    self.getTodoItemDone = function (item) {
+        var todoitem = {
+            Id: item.Id,
+            Description: item.Description,
+            IsDone: "Done",
+            PersonId: item.PersonId
+        };
+        ajaxHelper(todoItemsUri + item.Id, 'PUT', todoitem).done(function (item) {
+            self.todoitems.push(item);
+        });
+    }
+    
+
+
     self.people = ko.observableArray();
     self.newTodoItem = {
         Description: ko.observable(),
-        IsDone: ko.observable()   
+        IsDone: ko.observable()
     }
 
     var peopleUri = '/api/people/';
@@ -49,7 +70,7 @@
 
     self.addTodoItem = function (formElement) {
         var todoitem = {
-            PersonId: self.newTodoItem.Person.Id,            
+            PersonId: self.newTodoItem.Person.Id,
             Description: $("#Description").val(),
             IsDone: $("#IsDone").val()
         };

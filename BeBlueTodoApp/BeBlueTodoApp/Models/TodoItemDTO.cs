@@ -11,5 +11,6 @@ namespace BeBlueTodoApp.Models
         public string Description { get; set; }
         public string IsDone { get; set; }
         public string PersonName { get; set; }
+        public int PersonId { get; set; }
     }
 }
