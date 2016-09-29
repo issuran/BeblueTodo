@@ -8,40 +8,63 @@
 
 <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-8">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2 class="panel-title">ToDo List</h2>
             </div>
             <div class="panel-body">
-                <ul class="list-unstyled" data-bind="foreach: todoitems">
-                    <li>
-                        <span data-bind="text: Description"></span> : <strong><span data-bind="text: IsDone"></span></strong>
-                        <small><a href="#" data-bind="click: $parent.getTodoItemDetail">Details</a></small>
-                        <small><a href="#" data-bind="click: $parent.getTodoItemDone">DONE</a></small>
-                        <small><a href="#" data-bind="click: $parent.getTodoItemRemove">Remove</a></small>
-                    </li>
-                </ul>
+                <div class="row" data-bind="foreach: todoitems">
+                    <div class="col-md-2 col-md-offset-1"><span data-bind="text: Description" ></span></div>
+                    <div class="col-md-2"><strong><span data-bind="text: IsDone"></span></strong></div>
+                    <div class="col-md-2"><small><a href="#" data-bind="click: $parent.getTodoItemDetail">Details</a></small></div>
+                    <div class="col-md-2"><small><a href="#" data-bind="click: $parent.getTodoItemDone">DONE</a></small></div>
+                    <div class="col-md-2"><small><a href="#" data-bind="click: $parent.getTodoItemRemove">Remove</a></small></div>                    
+               </div>
             </div>
         </div>
         <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
     </div>
 
     <!-- ko if:detail() -->
-    <div class="col-md-4">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 class="panel-title">Todo Details</h2>
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>ToDo Details</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="">Developer</label>
+                <div class="col-md-4">                   
+                    <table class="table">
+                        <tr><td data-bind="text: detail().PersonName"></td></tr>
+                    </table>
                 </div>
-                <table class="table">
-                    <tr><td>Developer</td><td data-bind="text: detail().PersonName"></td></tr>
-                    <tr><td>Task</td><td data-bind="text: detail().Description"></td></tr>
-                    <tr><td>Status</td><td data-bind="text: detail().IsDone"></td></tr>
-                </table>
             </div>
-        </div>
-    </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="">Description</label>
+                <div class="col-md-4">
+                    <table class="table">
+                        <tr><td data-bind="text: detail().Description"></td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="">Status</label>
+                <div class="col-md-4">
+                    <table class="table">
+                        <tr><td data-bind="text: detail().IsDone"></td></tr>
+                    </table>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
     <!-- /ko -->
 
     <div class="col-md-4">
@@ -62,7 +85,7 @@
                     <div class="form-group" data-bind="with: newTodoItem">
                         <label class="col-md-4 control-label" for="inputDescription">Description</label>
                         <div class="col-md-8">
-                            <input id="Description" required="" name="Description" placeholder="Description" class="form-control input-md" type="text" data-bind="value:Description">
+                            <input id="Description" required="" name="Description" placeholder="Description" class="form-control input-md" maxlength="10" type="text" data-bind="value:Description">
                         </div>
                     </div>
 

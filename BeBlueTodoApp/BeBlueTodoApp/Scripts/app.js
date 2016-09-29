@@ -33,7 +33,10 @@
 
     self.remove = ko.observable();
     self.getTodoItemRemove = function (item) {
-        ajaxHelper(todoItemsUri + item.Id, 'DELETE').done();
+        ajaxHelper(todoItemsUri + item.Id, 'DELETE').done(function (data) {
+            getAllTodoItems();
+        });
+        
     }
 
 
@@ -47,10 +50,9 @@
         };
         ajaxHelper(todoItemsUri + item.Id, 'PUT', todoitem).done(function (item) {
             self.todoitems.push(item);
+            getAllTodoItems();
         });
     }
-    
-
 
     self.people = ko.observableArray();
     self.newTodoItem = {
