@@ -1,6 +1,14 @@
 # BeblueTodo
 A Todo app - using ASP .Net, WebAPI, SQL Server, knockout, DTO
 
+# What is it?
+
+BeBlueTodo is a basic task list organizer, where you may be able to see your tasks, as well as add more.
+
+As a user, you will be able to see details about your task such as the Developer responsible for each "Todo" just click on "Detail" link;
+
+You can set as Done a task finished, as well as remove a task, add a new task and check details;
+
 # How to Run
 I developed using Visual Studio Community 2015, Sql Server 2016 and Postman;
 
